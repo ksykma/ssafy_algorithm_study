@@ -1,3 +1,5 @@
+# SSAFY 데일리실습 7-4
+
 class Service:
     def fee(self, rent_time, mile):
         self.rent_price = (rent_time // 10) * 1200

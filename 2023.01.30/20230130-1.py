@@ -1,3 +1,4 @@
+# SSAFY 데일리실습 7-2
 
 class Creature:
 	def __init__(self):

@@ -1,3 +1,5 @@
+# SSAFY 데일리과제 7-2
+
 class Doggy:
     num_of_dogs = 0
     birth_of_dogs = 0

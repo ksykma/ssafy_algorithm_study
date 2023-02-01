@@ -1,3 +1,5 @@
+# SSAFY 데일리과제 7-4
+
 def collatz(num):
     cnt = 0
     while True:
