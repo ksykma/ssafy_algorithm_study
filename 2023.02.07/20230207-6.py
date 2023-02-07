@@ -1,4 +1,4 @@
-# SW Expert Academy 2차배열순회 - 12391
+# SW Expert Academy 0207_List02 - 12391
 
 import sys
 sys.stdin = open('input.txt', 'r')
