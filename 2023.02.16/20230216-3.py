@@ -3,39 +3,39 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
+def DFS(r, c):
+    dr = [-1, 1, 0, 0]   # 상하좌우
+    dc = [0, 0, -1, 1]
+    for i in range(4):
+        nr = r + dr[i]
+        nc = c + dc[i]
+        if miro[nr][nc] == 0:
+            miro[nr][nc] = 1
+            if DFS(nr, nc) == 1:
+                return 1
+        elif miro[nr][nc] == 3:
+            return 1
+    return 0
+
+
 T = int(input())
 for t in range(1, T + 1):
     N = int(input())
-    miro = [[1 for _ in range(N+2)]]
-    for _ in range(N):
-        miro.append([1]+list(map(int, input()))+[1])
-    miro.append([1 for _ in range(N+2)])
-    for i in range(N+2):
-        for j in range(N+2):
-            if miro[i][j] == 3:
-                h = i
-                w = j
-            if miro[i][j] == 2:
-                result1 = i
-                result2 = j
-                
-    g1 = h
-    g2 = w
-    while g1 != result1 or g2 != result2:
-        if miro[g1][g2+1] == 0 or miro[g1][g2+1] == 2:
-            g2 += 1
-            miro[g1][g2] = 1
-        elif miro[g1][g2-1] == 0 or miro[g1][g2-1] == 2:
-            g2 -= 1
-            miro[g1][g2] = 1
-        elif miro[g1+1][g2] == 0 or miro[g1+1][g2] == 2:
-            g1 += 1
-            miro[g1][g2] = 1
-        elif miro[g1-1][g2] == 0 or miro[g1-1][g2] == 0:
-            g1 -= 1
-            miro[g1][g2] = 1
-        else:
-            print(f'#{t}', 0)
-            break
-    else:
-        print(f'#{t}', 1)
+    miro = [[1]*(N+2)]+[[1]+list(map(int, input()))+[1] for _ in range(N)]+[[1]*(N+2)]
+    for h in range(1, N + 1):
+        for w in range(1, N + 1):
+            if miro[h][w] == 2:
+                goal = miro[h][w]
+                print(f'#{t}', DFS(h, w))
+
+
+
+
+
+
+
+
+
+
+
+
