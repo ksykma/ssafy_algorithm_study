@@ -27,15 +27,3 @@ for t in range(1, T + 1):
             if miro[h][w] == 2:
                 goal = miro[h][w]
                 print(f'#{t}', DFS(h, w))
-
-
-
-
-
-
-
-
-
-
-
-
