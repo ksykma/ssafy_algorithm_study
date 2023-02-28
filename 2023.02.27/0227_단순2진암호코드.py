@@ -7,7 +7,6 @@ dict = {'0001101' : 0, '0011001' : 1, '0010011' : 2, '0111101' : 3, '0100011' : 
 T = int(input())
 for t in range(1, T + 1):
     N, M = list(map(int, input().split()))
-    word = 0
     for i in range(N):
         nums = input()
         if '1' in nums:
