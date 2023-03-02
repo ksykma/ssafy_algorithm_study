@@ -3,6 +3,71 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
+# me = [list(map(int, input().split())) for _ in range(5)]
+# bingo = [list(map(int, input().split())) for _ in range(5)]
+# lst = []
+# for i in range(5):
+#     for j in range(5):
+#         lst.append(bingo[i][j])
+# O = [0, 0, 0, 0, 0]
+# cnt = 0
+# result = 12
+# k = 0
+# check = 0
+# while k != 12:
+#     for i in range(5):
+#         for j in range(5):
+#             if me[i][j] == lst[k]:
+#                 me[i][j] = 0
+#                 k += 1
+#                 check = 1
+#                 break
+#         if check == 1:
+#             check = 0
+#             break
+# while cnt != 3:
+#     for i in range(5):
+#         for j in range(5):
+#             if me[i][j] == lst[k]:
+#                 me[i][j] = 0
+#                 result += 1
+#                 check = 1
+#                 break
+#         if check == 1:
+#             check = 0
+#             break
+#     line1 = []
+#     line2 = []
+#     for i in range(5):
+#         line1.append(me[i][i])
+#         line2.append(me[0+i][4-i])
+#     for l in range(5):
+#         if cnt == 3:
+#             break
+#         if me[l] == O:
+#             cnt += 1
+#     for m in range(5):
+#         col = []
+#         for n in range(5):
+#             col.append(me[n][m])
+#         if cnt == 3:
+#             break
+#         if  col == O:
+#             cnt += 1
+#     if line1 == O:
+#         if cnt == 3:
+#             break
+#         cnt += 1
+#     if line2 == O:
+#         if cnt == 3:
+#             break
+#         cnt += 1
+#     if cnt != 3:
+#         cnt = 0
+#     k += 1
+# print(result)
+
+        
 me = [list(map(int, input().split())) for n in range(5)]
 bingo = [list(map(int, input().split())) for _ in range(5)]
 lst = []
@@ -10,13 +75,20 @@ for i in range(5):
     for j in range(5):
         lst.append(bingo[i][j])
 cnt = 0
-a = [n[2] for n in me]   # 특정 열 추출
-result = 0
+result = 10
 k = 0
 check = 0
-# for i in range(5):
-#     a = [n[i] for n in me]
-#     print(a)
+while k != 10:
+    for i in range(5):
+        for j in range(5):
+            if me[i][j] == lst[k]:
+                me[i][j] = 0
+                k += 1
+                check = 1
+                break
+        if check == 1:
+            check = 0
+            break
 while cnt != 3:
     for i in range(5):
         for j in range(5):
@@ -35,22 +107,22 @@ while cnt != 3:
         line2.append(me[0+i][4-i])
     for l in range(5):
         if me[l] == [0, 0, 0, 0, 0]:
-            cnt += 1
+            if cnt < 3:
+                cnt += 1
     for m in range(5):
-        if  a == [0, 0, 0, 0, 0]:
-            cnt += 1
+        col = []
+        for n in range(5):
+            col.append(me[n][m])
+        if  col == [0, 0, 0, 0, 0]:
+            if cnt < 3:
+                cnt += 1
     if line1 == [0, 0, 0, 0, 0]:
-        cnt += 1
+        if cnt < 3:
+            cnt += 1
     if line2 == [0, 0, 0, 0, 0]:
-        cnt += 1
+        if cnt < 3:
+            cnt += 1
     if cnt != 3:
         cnt = 0
     k += 1
 print(result)
-
-
-
-# while cnt != 3:
-#     for k in range(0, 25, 5):
-#         lst_sum = sum(lst[k:k+5])
-        
