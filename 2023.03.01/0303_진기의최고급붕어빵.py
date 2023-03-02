@@ -6,15 +6,11 @@ sys.stdin = open('input.txt', 'r')
 T = int(input())
 for t in range(1, T+1):
     N, M, K = list(map(int, input().split()))
-    lst = list(map(int, input().split()))
+    lst = sorted(list(map(int, input().split())))
     result = 'Possible'
-    fish_cnt = max(lst) // M * K
     for i in range(N):
-        if lst[i] < M:
+        fish_cnt = (lst[i] // M) * K - (i+1)
+        if fish_cnt < 0:
             result = 'Impossible'
             break
-        else:
-            if N > fish_cnt:
-                result = 'Impossible'
-                break
     print(f'#{t}', result)
