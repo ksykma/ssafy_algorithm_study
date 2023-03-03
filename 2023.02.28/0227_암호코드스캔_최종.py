@@ -8,7 +8,6 @@ dict_2 = {'0' : '0000', '1' : '0001', '2' : '0010', '3' : '0011',
           '4' : '0100', '5' : '0101', '6' : '0110', '7' : '0111',
           '8' : '1000', '9' : '1001', 'A' : '1010', 'B' : '1011',
           'C' : '1100', 'D' : '1101', 'E' : '1110', 'F' : '1111'}
-check = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
   
 T = int(input())
 for t in range(1, T + 1):
@@ -16,11 +15,9 @@ for t in range(1, T + 1):
     arr = [input() for _ in range(N)]
     lst = []
     for i in range(N):
-        for j in check:
-            if j in arr[i]:
-                a = arr[i].strip().rstrip('0')
-                if a not in lst:
-                    lst.append(a)
+        a = arr[i].strip().rstrip('0')
+        if a not in lst:
+            lst.append(a)
     lst2 = []
     for i in range(len(lst)):
         num = ''
@@ -45,6 +42,7 @@ for t in range(1, T + 1):
                     length = len(compare)-1
                     plus = 0
             length -= 1
+    lst3 = list(set(lst3))
   
     n = 1
     for i in range(len(lst3)):
@@ -63,7 +61,6 @@ for t in range(1, T + 1):
         for j in range(0, len(lst3[i]), mok):
             result += lst3[i][j]
         lst4.append(result)
-    lst4 = list(set(lst4))
   
     ans = 0
     ans_lst = []
