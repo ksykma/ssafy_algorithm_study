@@ -3,38 +3,36 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
-def func(s, e):
-    if s == e:
-        return
-    mid = (s + e) // 2
-    func(s, mid)
-    func(mid+1, e)
-    i, j, k= s, mid+1, s
-    while i <= mid and j <= e:
-        if lst[i] < lst[j]:
-            tmp[k] = lst[i]
-            i += 1
+def func(lst):
+    global cnt
+    if len(lst) == 1:
+        return lst
+    mid = len(lst) // 2
+    left = func(lst[:mid])
+    right = func(lst[mid:])
+    ret = []
+    if left[-1] > right[-1]:
+        cnt += 1
+    l, r = len(left), len(right)
+    idx_l, idx_r = 0, 0
+    while idx_l < l and idx_r < r:
+        if left[idx_l] < right[idx_r]:
+            ret.append(left[idx_l])
+            idx_l += 1
         else:
-            tmp[k] = lst[j]
-            j += 1
-        k += 1
-    while i <= mid:
-        tmp[k] = lst[i]
-        k += 1
-        i += 1
-    while j <= e:
-        tmp[k] = lst[j]
-        j += 1
-        k += 1
-    for i in range(s, e+1):
-        lst[i] = tmp[i]
-
+            ret.append(right[idx_r])
+            idx_r += 1
+    ret.extend(left[idx_l:])
+    ret.extend(right[idx_r:])
+    return ret
+    
 
 T = int(input())
 for t in range(1, T + 1):
     N = int(input())
     lst = list(map(int, input().split()))
-    tmp = [0] * N
-    func(0, N-1)
-    print(lst)
+    cnt = 0
+    print(f'#{t}', func(lst)[N//2], cnt)
+    
+
 
