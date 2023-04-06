@@ -3,6 +3,12 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
+def dfs(v):
+    visited[v] = 1
+    for w in G[v]:
+        if not visited[w]:
+            dfs(w)
+
 T = int(input())
 for t in range(1, T + 1):
     N, M = map(int, input().split())
@@ -14,4 +20,10 @@ for t in range(1, T + 1):
         G[v].append(u)
     
     visited = [0] * (N+1)
-    for i in range()
+    ans = 0
+    for i in range(1, N+1):
+        if visited[i] == 1:
+            continue
+        ans += 1
+        dfs(i)
+    print(f'#{t}', ans)
