@@ -9,8 +9,13 @@ recommend = list(map(int, input().split()))
 picture = []
 # lst.sort(key=lambda x:x[0])
 for i in range(C): # 게시 순서, 학생 번호, 추천 수
-    if i <= N-1:
-        picture.append([i, recommend[i], 1])
+    if len(picture) < N:
+        for k in range(len(picture)):
+            if recommend[i] == picture[k][1]:
+                picture[k][2] += 1
+                break
+        else:
+            picture.append([i, recommend[i], 1])
     else:
         picture.sort(key=lambda x:(x[2], x[0]))
         for j in range(N):
@@ -21,5 +26,5 @@ for i in range(C): # 게시 순서, 학생 번호, 추천 수
             picture[0] = [i, recommend[i], 1]
 
 picture.sort(key=lambda x:x[1])
-for i in range(N):
+for i in range(len(picture)):
     print(picture[i][1], end=' ')
